@@ -1,0 +1,77 @@
+### GET all books
+GET http://localhost/
+
+### GET book by isbn
+GET http://localhost/isbn/2
+###
+
+### GET book by author: Hans Christian Andersen
+GET http://localhost/author/Hans Christian Andersen
+###
+
+### GET book by author: Unknown
+GET http://localhost/author/Unknown
+###
+
+### GET reviews
+GET http://localhost/review/2
+###
+
+###
+POST https://localhost/register
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username" : "Admin",
+  "password": "admin"
+}
+###
+
+### Invalid Login
+POST http://localhost/customer/login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username" : "Admin2",
+  "password": "admin"
+}
+###
+
+### Login
+POST http://localhost/customer/login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username" : "Admin",
+  "password": "admin"
+}
+###
+### Register
+POST http://localhost/register
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username" : "Admin",
+  "password": "admin"
+}
+###
+
+### Add review
+PUT http://localhost/customer/auth/review/2
+Accept: application/json
+Content-Type: application/json
+
+{
+  "rating" : 5,
+  "comment": "Excellent book"
+}
+###
+
+### Delete review
+DELETE http://localhost/customer/auth/review/2
+
+###

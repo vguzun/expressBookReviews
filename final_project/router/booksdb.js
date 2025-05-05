@@ -32,14 +32,14 @@ let bookService = {
         return Promise.resolve(booksByAuthor);
     },
 
-    getBooksByTitle: async function () {
+    getBooksByTitle: async function (title) {
         const booksByTitle = {}
         for (const [key, value] of Object.entries(books)) {
             if (value.title === title) {
                 booksByTitle[parseInt(key)] = value;
             }
         }
-        return Promise.resolve(booksByAuthor);
+        return Promise.resolve(booksByTitle);
     },
     addReview: async function (isbnId, userName, body) {
         let book = await this.getByIsbn(isbnId)

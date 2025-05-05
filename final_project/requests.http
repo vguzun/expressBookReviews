@@ -13,6 +13,10 @@ GET http://localhost/author/Hans Christian Andersen
 GET http://localhost/author/Unknown
 ###
 
+### GET book by title: Title
+GET http://localhost/title/Pride and Prejudice
+###
+
 ### GET reviews
 GET http://localhost/review/2
 ###

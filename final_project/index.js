@@ -15,7 +15,7 @@ app.use("/customer/auth/*", function auth(req,res,next){
     verifyAuthentication(req, res, next);
 });
  
-const PORT = 5000;
+const PORT = 80;
 
 app.use("/customer", customer_routes);
 app.use("/", genl_routes);

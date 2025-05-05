@@ -1,8 +1,15 @@
 ### GET all books
 GET http://localhost/
 
+### GET all books async
+GET http://localhost/books-async
+
 ### GET book by isbn
 GET http://localhost/isbn/2
+###
+
+### GET book by isbn-async
+GET http://localhost/isbn-async/2
 ###
 
 ### GET book by author: Hans Christian Andersen
@@ -13,8 +20,16 @@ GET http://localhost/author/Hans Christian Andersen
 GET http://localhost/author/Unknown
 ###
 
+### GET async book by author: Unknown
+GET http://localhost/author-async/Unknown
+###
+
 ### GET book by title: Title
 GET http://localhost/title/Pride and Prejudice
+###
+
+### GET book async by title: Title
+GET http://localhost/title-async/Pride and Prejudice
 ###
 
 ### GET reviews

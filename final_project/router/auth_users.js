@@ -59,7 +59,7 @@ regd_users.post("/login", (req, res) => {
 });
 
 // Add a book review
-regd_users.put("/auth/review/:isbn", async (req, res) => {
+regd_users.put("/auth/review/:isbn", (req, res) => {
     let isbn = req.params.isbn;
     let isbnId = parseInt(isbn);
     if (isNaN(isbnId)) {
@@ -69,22 +69,13 @@ regd_users.put("/auth/review/:isbn", async (req, res) => {
         }));
         return
     }
-    try {
-        const userName = req.session.authorization['username'];
-        let review = await bookService.addReview(isbnId, userName, req.body);
-        return res.status(201).send(review);
-    } catch (e) {
-        res.status(500).json(
-            {
-                "status": 500,
-                "title": "Internal error occurred"
-            }
-        )
-    }
+    const userName = req.session.authorization['username'];
+    let review = bookService.addReview(isbnId, userName, req.body);
+    return res.status(201).send(review);
 });
 
 // Delete a book review
-regd_users.delete("/auth/review/:isbn", async (req, res) => {
+regd_users.delete("/auth/review/:isbn", (req, res) => {
     let isbn = req.params.isbn;
     let isbnId = parseInt(isbn);
     if (isNaN(isbnId)) {
@@ -94,18 +85,9 @@ regd_users.delete("/auth/review/:isbn", async (req, res) => {
         }));
         return
     }
-    try {
-        const userName = req.session.authorization['username'];
-        await bookService.deleteReview(isbnId, userName);
-        return res.status(204).send();
-    } catch (e) {
-        res.status(500).json(
-            {
-                "status": 500,
-                "title": "Internal error occurred"
-            }
-        )
-    }
+    const userName = req.session.authorization['username'];
+    bookService.deleteReview(isbnId, userName);
+    return res.status(204).send();
 });
 
 module.exports.authenticated = regd_users;

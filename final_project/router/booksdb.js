@@ -14,42 +14,42 @@ const books =
 
 
 let bookService = {
-    getAll: async function () {
-        return Promise.resolve(books)
+    getAll: function () {
+        return books
     },
 
-    getByIsbn: async function (isbn) {
-        return Promise.resolve(books[isbn])
+    getByIsbn:  function (isbn) {
+        return books[isbn]
     },
 
-    getByAuthor: async function (author) {
+    getByAuthor: function (author) {
         const booksByAuthor = {}
         for (const [key, value] of Object.entries(books)) {
             if (value.author === author) {
                 booksByAuthor[parseInt(key)] = value;
             }
         }
-        return Promise.resolve(booksByAuthor);
+        return booksByAuthor;
     },
 
-    getBooksByTitle: async function (title) {
+    getBooksByTitle: function (title) {
         const booksByTitle = {}
         for (const [key, value] of Object.entries(books)) {
             if (value.title === title) {
                 booksByTitle[parseInt(key)] = value;
             }
         }
-        return Promise.resolve(booksByTitle);
+        return booksByTitle;
     },
-    addReview: async function (isbnId, userName, body) {
-        let book = await this.getByIsbn(isbnId)
+    addReview:  function (isbnId, userName, body) {
+        let book = this.getByIsbn(isbnId)
         if (book !== undefined) {
             book.reviews[userName] = body;
         }
         return body;
     },
-    deleteReview: async function (isbnId, userName) {
-        let book = await this.getByIsbn(isbnId)
+    deleteReview:  function (isbnId, userName) {
+        let book = this.getByIsbn(isbnId)
         if (book === undefined) {
             return;
         }

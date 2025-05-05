@@ -1,8 +1,8 @@
 const express = require('express');
-const jwt = require('jsonwebtoken');
 const session = require('express-session')
 const customer_routes = require('./router/auth_users.js').authenticated;
 const genl_routes = require('./router/general.js').general;
+const port = require('./config/default.js').port;
 let verifyAuthentication = require("./router/auth_users.js").verifyAuthentication;
 
 const app = express();
@@ -15,9 +15,7 @@ app.use("/customer/auth/*", function auth(req,res,next){
     verifyAuthentication(req, res, next);
 });
  
-const PORT = 80;
-
 app.use("/customer", customer_routes);
 app.use("/", genl_routes);
 
-app.listen(PORT,()=>console.log("Server is running"));
+app.listen(port,()=>console.log("Server is running"));
